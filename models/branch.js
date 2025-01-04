@@ -45,5 +45,13 @@ const branchDetailsSchema = new mongoose.Schema({
   status: { type: Boolean, default: true },
 });
 
+const branchSchema = new mongoose.Schema({
+  fileName: String,
+  fileData: Buffer,
+  rows: Array, // Stores individual rows of the uploaded Excel file
+});
+
+const UploadBranch = mongoose.model("uploadBranch", branchSchema);
 const Branch = mongoose.model("Branch", branchDetailsSchema);
-module.exports = Branch;
+
+module.exports = { Branch, UploadBranch };
